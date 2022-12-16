@@ -52,4 +52,6 @@ TL: Sebastián Vidal (https://github.com/sebavidal10)
 
 - Alfredo Villegas : https://github.com/alfredovillegas
 
+- Alejandro González : https://github.com/AlejandroGonzalezG
+
 ### Frontend
