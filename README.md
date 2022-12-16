@@ -50,4 +50,6 @@ TL: Sebastián Vidal
 
 ### Backend
 
+- Alejandro González (https://github.com/AlejandroGonzalezG)
+
 ### Frontend
