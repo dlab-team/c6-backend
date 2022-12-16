@@ -50,4 +50,6 @@ TL: Sebastián Vidal
 
 ### Backend
 
+- Alfredo Villegas : https://github.com/alfredovillegas
+
 ### Frontend
