@@ -49,7 +49,7 @@ bug report or contribution.
 TL: Sebastián Vidal (https://github.com/sebavidal10)
 
 ### Backend
-
 - Alfredo Villegas : https://github.com/alfredovillegas
+- Victor Molina: https://github.com/tomasmolinaarias
 
 ### Frontend
