@@ -46,8 +46,12 @@ bug report or contribution.
 
 ## Equipo
 
-TL: Sebastián Vidal
+TL: Sebastián Vidal (https://github.com/sebavidal10)
 
 ### Backend
+- Alfredo Villegas : https://github.com/alfredovillegas
+- Victor Molina: https://github.com/tomasmolinaarias
+
+- Alejandro González : https://github.com/AlejandroGonzalezG
 
 ### Frontend
