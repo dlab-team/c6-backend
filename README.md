@@ -49,9 +49,10 @@ bug report or contribution.
 TL: Sebastián Vidal (https://github.com/sebavidal10)
 
 ### Backend
+
 - Alfredo Villegas : https://github.com/alfredovillegas
 - Victor Molina: https://github.com/tomasmolinaarias
-
+- Paul Levy: https://github.com/tomasmolinaarias
 - Alejandro González : https://github.com/AlejandroGonzalezG
 
 ### Frontend
