@@ -38,7 +38,9 @@ Ejecutar docker-compose up
 TL: Sebastián Vidal (https://github.com/sebavidal10)
 
 ### Backend
+
 - Alfredo Villegas : https://github.com/alfredovillegas
 - Victor Molina: https://github.com/tomasmolinaarias
 - Miguel Viloria: https://github.com/ViloriaUrdaneta
 - Alejandro González : https://github.com/AlejandroGonzalezG
+- Paul Levy: https://github.com/strike2-ux
