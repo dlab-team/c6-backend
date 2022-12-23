@@ -42,5 +42,3 @@ TL: Sebastián Vidal (https://github.com/sebavidal10)
 - Victor Molina: https://github.com/tomasmolinaarias
 - Miguel Viloria: https://github.com/ViloriaUrdaneta
 - Alejandro González : https://github.com/AlejandroGonzalezG
-
-
