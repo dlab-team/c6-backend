@@ -1,48 +1,37 @@
 # Devsafio API
 
-Proyecto para programa DLAB - Desafio Latam
+## Descripción del proyecto
 
-## Usage
+Proyecto web para la empresa DLAB que pretende ser un puente entre los talentos digitales y las empresas de TI. 
+Para cumplir con este objetivo, se solicitó a la Incubadora Desafio-Latam la creación de una plataforma capaz de gestionar como usuarios a aquellos graduados que buscan trabajo en el área de tecnología, para luego poner a disposición las respectivas pruebas técnicas solicitadas por las empresas y generar un perfil Job-Ready que los certifique en sus futuras postulaciones.
 
-Check the package.json file for `npm` commands
+## Dependencias
 
-To run this project you previously need to install:
+Este proyecto se construyó principalmente con las siguientes tecnologías:
+
+### Backend
+Javascript
+Node.js
+Docker
+PostgreSQL
+
+## Utilización
+
+Revisa el archivo package.json para los comandos `npm` 
+
+Para correr este proyecto necesitas previamente instalar:
 
 - `docker` & `docker-compose`
 
-### Running the App with Docker
+### Correr la app con Docker
 
-#### Create the container's network
+Crear un archivo llamado .env, y poner en él los contenidos del archivo .env_example
 
-```
-make network
-```
+Ejecutar npm install
 
-#### Starting the containers
+Teniendo Docker instalado y funcionando en el computador
 
-```
-make run
-```
-
-#### Access the container through SSH
-
-```
-make enter
-```
-
-## Help and Support
-
-If you think you may have found a bug, please open an [issue](https://github.com/seguelador/nodejs-express-boilerplate/issues).
-
-> Please don't hesitate to ask! Your question will likely be useful for other people and help us to improve the existing documentation.
-
-## Contributing
-
-We work hard to provide a high-quality and useful SDK for our Fury services, and we greatly value feedback and
-contributions. Please review
-our [contributing guidelines](./CONTRIBUTING.md) before
-submitting any issues or pull requests to ensure we have all the necessary information to effectively respond to your
-bug report or contribution.
+Ejecutar docker-compose up
 
 ## Equipo
 
@@ -54,8 +43,4 @@ TL: Sebastián Vidal (https://github.com/sebavidal10)
 - Victor Molina: https://github.com/tomasmolinaarias
 - Miguel Viloria: https://github.com/ViloriaUrdaneta
 - Alejandro González : https://github.com/AlejandroGonzalezG
-
-- Alejandro González : https://github.com/AlejandroGonzalezG
 - Paul Levy: https://github.com/strike2-ux
-
-### Frontend
