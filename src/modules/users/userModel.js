@@ -30,8 +30,7 @@ User.init(UserSchema, {
   sequelize,
   modelName: 'User',
   tableName: USER_TABLE,
-  timestamps: true,
-  paranoid: true
+  timestamps: false
 })
 
 module.exports = { User, UserSchema }
