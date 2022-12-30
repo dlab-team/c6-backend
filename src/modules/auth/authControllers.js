@@ -16,6 +16,21 @@ const registerUser = async (req, res, next) => {
   }
 }
 
+const login = async (req, res, next) => {
+  const { email, password } = req.body
+  try {
+    const token = await authServices.login(email, password)
+    endpointResponse({
+      res,
+      statusCode: 200,
+      body: { token }
+    })
+  } catch (error) {
+    next(error)
+  }
+}
+
 module.exports = {
-  registerUser
+  registerUser,
+  login
 }

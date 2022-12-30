@@ -14,6 +14,18 @@ async function createUser(newUserData) {
   return user
 }
 
+async function findOneUserBy({ id, email }) {
+  const where = id ? { id } : { email }
+  const user = await User.findOne({
+    where
+  })
+  if (!user) {
+    throw new ErrorObject('User not found', httpStatus.NOT_FOUND)
+  }
+  return user
+}
+
 module.exports = {
-  createUser
+  createUser,
+  findOneUserBy
 }
