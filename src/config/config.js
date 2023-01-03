@@ -6,7 +6,6 @@ module.exports = {
     password: process.env.POSTGRES_PASSWORD,
     database: process.env.POSTGRES_DB,
     host: process.env.POSTGRES_HOST,
-    port: process.env.POSTGRES_PORT,
     dialect: 'postgres'
   },
   production: {
@@ -15,7 +14,6 @@ module.exports = {
     database: process.env.POSTGRES_DB,
     host: process.env.POSTGRES_HOST,
     dialect: 'postgres',
-    port: process.env.POSTGRES_PORT,
     dialectOptions: {
       ssl: {
         require: true,
