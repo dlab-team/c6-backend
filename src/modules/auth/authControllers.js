@@ -45,7 +45,22 @@ const login = async (req, res, next) => {
   }
 }
 
+const changePassword = async (req, res, next) => {
+  const { password, token } = req.body
+  try {
+    const user = await authServices.newPassword(password, token)
+    endpointResponse({
+      res,
+      statusCode: 201,
+      body: user
+    })
+  } catch (error) {
+    next(error)
+  }
+}
+
 module.exports = {
   registerUser,
-  login
+  login,
+  changePassword
 }

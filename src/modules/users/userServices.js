@@ -25,7 +25,16 @@ async function findOneUserBy({ id, email }) {
   return user
 }
 
+async function findUserByToken({ token }) {
+  const user = User.findOne(token)
+  if (!user) {
+    throw new ErrorObject('User not found', httpStatus.NOT_FOUND)
+  }
+  return user
+}
+
 module.exports = {
   createUser,
-  findOneUserBy
+  findOneUserBy,
+  findUserByToken
 }
