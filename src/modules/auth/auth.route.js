@@ -4,5 +4,10 @@ const authControllers = require('./authControllers')
 
 authRouter.post('/auth/register', authControllers.registerUser)
 authRouter.post('/auth/login', authControllers.login)
+router.post('/recovery-password', authController.recoveryPassword)
+router
+  .route('/new-password/:token')
+  .get(authController.verifyPassword)
+  .post(authController.createPassword)
 
 module.exports = authRouter
