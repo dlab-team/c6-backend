@@ -45,6 +45,21 @@ const login = async (req, res, next) => {
   }
 }
 
+const recovery = async (req, res, next) => {
+  const { email, } = req.body
+  try {
+    const token = await authServices.sendToken(email)
+    endpointResponse({
+      res,
+      statusCode: 200,
+      body: { token }
+    })
+  } catch (error) {
+    next(error)
+  }
+}
+
+
 const changePassword = async (req, res, next) => {
   const { password, token } = req.body
   try {
@@ -62,5 +77,6 @@ const changePassword = async (req, res, next) => {
 module.exports = {
   registerUser,
   login,
+  recovery,
   changePassword
 }
