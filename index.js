@@ -34,6 +34,7 @@ app.use(express.urlencoded({ extended: false }))
 
 app.use('/api', authRouter)
 
+
 app.get('/', function (_req, res) {
   res.send({
     name: 'Devsafio API',
