@@ -3,6 +3,7 @@ const { ErrorObject } = require('../../utils/helpers/error')
 const { findOneUserBy } = require('../users/userServices')
 const { createJWT, verifyJWT } = require('../../utils/jwt')
 const { hashPassword } = require('../../utils/hashPassword')
+const { emailForgotPassword } = require('../../utils/email')
 
 async function login(email, password) {
 
@@ -24,7 +25,9 @@ async function sendToken(email) {
   }
 
   const token = createJWT({ id: user.id, name: user.name })
-  return token
+
+  //emailForgotPassword(user, token);
+
 }
 
 async function newPassword(password, token) {
@@ -35,7 +38,7 @@ async function newPassword(password, token) {
   if (!user) {
     throw new ErrorObject('user not found', 401)
   }
-  
+
   const newPassword = hashPassword(password)
   user.password = newPassword;
   

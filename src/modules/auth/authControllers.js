@@ -48,7 +48,7 @@ const login = async (req, res, next) => {
 const recovery = async (req, res, next) => {
   const { email, } = req.body
   try {
-    const token = await authServices.sendToken(email)
+    await authServices.sendToken(email)
     endpointResponse({
       res,
       statusCode: 200,
@@ -63,7 +63,7 @@ const recovery = async (req, res, next) => {
 const changePassword = async (req, res, next) => {
   const { password, token } = req.body
   try {
-    const user = await authServices.newPassword(password, token)
+    await authServices.newPassword(password, token)
     endpointResponse({
       res,
       statusCode: 201,
