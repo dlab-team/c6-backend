@@ -13,6 +13,25 @@ const endpointResponse = ({
   })
 }
 
+const endpointErrorResponse = ({
+  res,
+  statusCode = 500,
+  message = 'Error',
+  error
+}) => {
+  const errorMessage = error.statusCode
+    ? error.message
+    : 'Internal server error'
+
+  res.status(statusCode).json({
+    status: false,
+    statusCode,
+    message,
+    errorMessage
+  })
+}
+
 module.exports = {
-  endpointResponse
+  endpointResponse,
+  endpointErrorResponse
 }
