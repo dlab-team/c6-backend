@@ -35,10 +35,6 @@ async function newPassword(password, token) {
   const userData = await verifyJWT(token);
   const user = await findOneUserBy(userData.id);
 
-  if (!user) {
-    throw new ErrorObject('user not found', 401)
-  }
-
   const newPassword = hashPassword(password)
   user.password = newPassword;
   

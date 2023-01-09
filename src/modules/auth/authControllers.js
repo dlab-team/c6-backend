@@ -61,16 +61,31 @@ const recovery = async (req, res, next) => {
 
 
 const changePassword = async (req, res, next) => {
-  const { password, token } = req.body
+  const { password, confirmPassword, token } = req.body
+  
+  if(password !== confirmPassword){
+    endpointErrorResponse({
+      res,
+      statusCode: 201,
+      message: "Las contraseñas no coinciden",
+    })
+  }
+
   try {
     await authServices.newPassword(password, token)
     endpointResponse({
       res,
       statusCode: 201,
-      body: user
+      body: user,
+      message: "Contraseña actualizada exitosamente"
     })
   } catch (error) {
-    next(error)
+    endpointErrorResponse({
+      res,
+      statusCode: 201,
+      message: "Ocurrio un problema actualizando la contraseña",
+      error
+    })
   }
 }
 
