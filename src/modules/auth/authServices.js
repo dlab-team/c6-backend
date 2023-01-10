@@ -6,7 +6,6 @@ const { hashPassword } = require('../../utils/hashPassword')
 const { emailForgotPassword } = require('../../utils/email')
 
 async function login(email, password) {
-
   const user = await findOneUserBy({ email })
   const isCorrectPassword = comparePassword(password, user.password)
   if (!isCorrectPassword) {
@@ -17,29 +16,27 @@ async function login(email, password) {
 }
 
 async function sendToken(email) {
-  
   const user = await findOneUserBy({ email })
-  
+
   if (!user) {
     throw new ErrorObject('user not found', 401)
   }
 
   const token = createJWT({ id: user.id, name: user.name })
+  await emailForgotPassword({ email, name: user.name }, token)
 
-  //emailForgotPassword(user, token);
-
+  return token
 }
 
 async function newPassword(password, token) {
-
-  const userData = await verifyJWT(token);
-  const user = await findOneUserBy(userData.id);
+  const userData = await verifyJWT(token)
+  const user = await findOneUserBy({ id: userData.id })
 
   const newPassword = hashPassword(password)
-  user.password = newPassword;
-  
-  await user.save();
+  user.password = newPassword
+  user.save()
 
+  return user
 }
 
 module.exports = {

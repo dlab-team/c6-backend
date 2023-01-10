@@ -1,22 +1,21 @@
-//const nodemailer = require('nodemailer')
+const nodemailer = require('nodemailer')
 
 module.exports = {
-
   emailForgotPassword: async (data, token) => {
-    const { _email, name } = data;
+    const { email, name } = data
     const transport = nodemailer.createTransport({
-      host: `${process.env.EMAIL_HOST}`,
-      port: `${process.env.EMAIL_PORT}`,
+      host: `${process.env.MAIL_HOST}`,
+      port: `${process.env.MAIL_PORT}`,
       auth: {
-        user: `${process.env.EMAIL_USER}`,
-        pass: `${process.env.EMAIL_PASS}`
+        user: `${process.env.MAIL_USER}`,
+        pass: `${process.env.MAIL_PASS}`
       }
     })
-    const info = await transport.sendMail({
+    await transport.sendMail({
       from: '"Devsafio - " <devsafio@devsafio.com>',
-      to: _email,
-      subject: "Devsafio - Reestablecer el Password",
-      text: "Restablecer tu password",
+      to: email,
+      subject: 'Devsafio - Reestablecer el Password',
+      text: 'Restablecer tu password',
       html: ` <div>
             <h2>hola ${name}, has solicitado reestablecer tu password</h2>
             <br />
@@ -30,5 +29,7 @@ module.exports = {
             <p>Si tu no solicitaste este cambio, puedes ignorar el mensaje</p>
           </div>`
     })
-  },
+
+    console.log('Message sent to: ', email)
+  }
 }
