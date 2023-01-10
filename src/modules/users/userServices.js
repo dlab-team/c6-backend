@@ -25,7 +25,8 @@ async function findOneUserBy({ id, email }) {
   return user
 }
 
+
 module.exports = {
   createUser,
-  findOneUserBy
+  findOneUserBy,
 }
