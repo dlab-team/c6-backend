@@ -7,6 +7,7 @@ const app = express()
 
 const sequelize = require('./src/database/sequelize')
 const authRouter = require('./src/modules/auth/auth.route')
+const userRouter = require('./src/modules/users/user.route')
 const { ErrorObject } = require('./src/utils/helpers/error')
 
 // cors config
@@ -33,6 +34,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 app.use('/api', authRouter)
+app.use('/api', userRouter)
 
 app.get('/', function (_req, res) {
   res.send({
