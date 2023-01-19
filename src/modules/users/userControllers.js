@@ -7,9 +7,9 @@ const userServices = require('./userServices')
 
 
 const getProfile = async (req, res, next) => {
-  const { id } = req.body
+  const { email } = req.body
   try {
-    const user = await userServices.findOneUserBy({id})
+    const user = await userServices.findOneUserBy({ email })
     endpointResponse({
       res,
       statusCode: httpStatus.FOUND,
