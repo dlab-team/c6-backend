@@ -15,6 +15,6 @@ authRouter.post(
   authControllers.login
 )
 authRouter.post('/auth/recovery', authControllers.recovery)
-authRouter.post('/auth/changePassword', authControllers.changePassword)
+authRouter.put('/auth/changePassword', authControllers.changePassword)
 
 module.exports = authRouter

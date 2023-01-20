@@ -51,7 +51,8 @@ const recovery = async (req, res, next) => {
     const token = await authServices.sendToken(email)
     endpointResponse({
       res,
-      statusCode: 200,
+      statusCode: httpStatus.OK,
+      message: 'Token enviado de forma exitosa',
       body: { token }
     })
   } catch (error) {
@@ -65,7 +66,7 @@ const changePassword = async (req, res, next) => {
   if (password !== confirmPassword) {
     endpointErrorResponse({
       res,
-      statusCode: 201,
+      statusCode: httpStatus.UNAUTHORIZED,
       message: 'Las contraseñas no coinciden'
     })
   }
@@ -74,13 +75,13 @@ const changePassword = async (req, res, next) => {
     await authServices.newPassword(password, token)
     endpointResponse({
       res,
-      statusCode: 201,
+      statusCode: httpStatus.OK,
       message: 'Contraseña actualizada exitosamente'
     })
   } catch (error) {
     endpointErrorResponse({
       res,
-      statusCode: 201,
+      statusCode: httpStatus.UNAUTHORIZED,
       message: 'Ocurrio un problema actualizando la contraseña',
       error
     })
