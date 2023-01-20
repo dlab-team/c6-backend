@@ -14,5 +14,8 @@ authRouter.post(
   validateReqSchema(loginReqSchema),
   authControllers.login
 )
+authRouter.post('/auth/recovery', authControllers.recovery)
+authRouter.post('/auth/changePassword', authControllers.changePassword)
+
 
 module.exports = authRouter

@@ -14,7 +14,7 @@ async function createUser(newUserData) {
   return user
 }
 
-async function findOneUserBy({ id, email }) {
+async function findOneUserBy({ id, email = null }) {
   const where = id ? { id } : { email }
   const user = await User.findOne({
     where
