@@ -17,7 +17,7 @@ const endpointErrorResponse = ({
   res,
   statusCode = 500,
   message = 'Error',
-  error
+  error = {}
 }) => {
   const errorMessage = error.statusCode
     ? error.message

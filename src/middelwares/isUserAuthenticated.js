@@ -1,12 +1,11 @@
-const { ErrorObject } = require('../utils/helpers/error')
 const { verifyJWT } = require('../utils/jwt')
+const { endpointErrorResponse } = require('../utils/helpers/successResponse')
 
 const getTokenFromRequest = (request) => {
   const authorization = request.headers['authorization']
   const token = authorization ? authorization.substring(7) : null
   return token
 }
-const httpUnauthorizedError = new ErrorObject('Unauthorized', 401)
 
 const isUserAuthenticated = (req, res, next) => {
   try {
@@ -17,9 +16,17 @@ const isUserAuthenticated = (req, res, next) => {
       return next()
     }
 
-    next(httpUnauthorizedError)
+    endpointErrorResponse({
+      res,
+      message: 'Usuario no autenticado',
+      statusCode: 401
+    })
   } catch (err) {
-    next(httpUnauthorizedError)
+    endpointErrorResponse({
+      res,
+      message: 'Usuario no autenticado',
+      statusCode: 401
+    })
   }
 }
 
