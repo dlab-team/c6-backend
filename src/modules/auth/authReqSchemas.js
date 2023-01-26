@@ -16,7 +16,10 @@ const registerUserReqSchema = [
   passwordValidations
 ]
 
+const recoverySchema = [emailValidations]
+
 module.exports = {
   loginReqSchema,
-  registerUserReqSchema
+  registerUserReqSchema,
+  recoverySchema
 }
