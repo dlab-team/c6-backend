@@ -9,13 +9,9 @@ const options = {
         openapi: "3.0.0",
         info: { title: 'Devsafio API', version: '1.0.0'},
     },
-    servers: [
-        {
-            url: "http://localhost:3000"
-        }
-    ],
     apis: [
-        `${path.join(__dirname, "../modules/auth/auth.route.js")}`
+        `${path.join(__dirname, "../modules/auth/auth.docs.js")}`,
+        `${path.join(__dirname, "../modules/users/user.docs.js")}`
     ]
 }
 

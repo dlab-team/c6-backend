@@ -13,7 +13,7 @@ const registerUser = async (req, res, next) => {
     endpointResponse({
       res,
       statusCode: httpStatus.CREATED,
-      message: 'El registro se completo de manera exitosa'
+      message: 'El registro se completó de manera exitosa'
     })
   } catch (error) {
     endpointErrorResponse({
@@ -39,7 +39,7 @@ const login = async (req, res, next) => {
     endpointErrorResponse({
       res,
       statusCode: httpStatus.UNAUTHORIZED,
-      message: 'Fallo la Autenticación',
+      message: 'Falló la Autenticación',
       error
     })
   }
@@ -52,8 +52,8 @@ const recovery = async (req, res, next) => {
     endpointResponse({
       res,
       statusCode: httpStatus.OK,
-      message: 'Token enviado de forma exitosa',
-      body: { token }
+      body: { token },
+      message: 'Token enviado de forma exitosa'
     })
   } catch (error) {
     next(error)
