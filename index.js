@@ -9,6 +9,7 @@ const sequelize = require('./src/database/sequelize')
 const authRouter = require('./src/modules/auth/auth.route')
 const userRouter = require('./src/modules/users/user.route')
 const { ErrorObject } = require('./src/utils/helpers/error')
+const { swaggerDocs } = require('./src/utils/swagger')
 
 // cors config
 var corsOptions = {
@@ -46,6 +47,9 @@ app.get('/', function (_req, res) {
 app.get('/ping', function (_req, res) {
   res.send('pong')
 })
+
+ //swagger
+swaggerDocs(app, process.env.PORT)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
