@@ -1,5 +1,4 @@
 const { Model, DataTypes, UUIDV4 } = require('sequelize')
-const sequelize = require('../../database/sequelize')
 
 const USER_TABLE = 'users'
 
@@ -26,11 +25,13 @@ const UserSchema = {
   }
 }
 
-User.init(UserSchema, {
-  sequelize,
-  modelName: 'User',
-  tableName: USER_TABLE,
-  timestamps: false
-})
+function init(sequelize) {
+  User.init(UserSchema, {
+    sequelize,
+    tableName: USER_TABLE,
+    timestamps: false
+  })
+  return User
+}
 
-module.exports = { User, UserSchema }
+module.exports = { User, UserSchema, init }
