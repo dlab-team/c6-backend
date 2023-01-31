@@ -1,10 +1,20 @@
 const { Model, DataTypes, UUIDV4 } = require('sequelize')
-const sequelize = require('../../database/sequelize')
-const User = require('../users/userModel')
+const USER_TABLE = require('../users/userModel')
+const CITY_TABLE = require('../cities/cityModel')
 
 const PROFILE_TABLE = 'profiles'
 
-class Profile extends Model {}
+class Profile extends Model {
+  static associate(sequelize){
+    this.belongsTo(sequelize.model.User, {
+      foreignKey: 'userId'
+    })
+
+    this.belongsTo(sequelize.model.City, {
+      foreignKey: 'cityId'
+    })
+  }
+}
 
 const ProfileSchema = {
   id: {
@@ -30,23 +40,31 @@ const ProfileSchema = {
   },
   cityId: {
     allowNull: false,
+    type: DataTypes.UUID,
+    field: 'city_id',
+    unique: true,
+    references: {
+        model: CITY_TABLE
+    }
   },
   userId: {
     allowNull: false,
-    type: DataTypes.INTEGER,
+    type: DataTypes.UUID,
+    field: 'user_id',
+    unique: true,
     references: {
-        model: User.tableName,
-        key: 'id'
+        model: USER_TABLE
     }
+  }
 }
 
-}
+function init(sequelize){
+  Profile.init(ProfileSchema, {
+    sequelize,
+    tableName: PROFILE_TABLE,
+    timestamps: false
+  })
+  return Profile
+} 
 
-Profile.init(ProfileSchema, {
-  sequelize,
-  modelName: 'Profile',
-  tableName: PROFILE_TABLE,
-  timestamps: false
-})
-
-module.exports = { Profile, ProfileSchema }
+module.exports = { Profile, ProfileSchema, PROFILE_TABLE, init }
