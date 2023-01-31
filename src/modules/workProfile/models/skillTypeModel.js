@@ -2,7 +2,14 @@ const { Model, DataTypes, UUIDV4 } = require('sequelize')
 
 const SKILL_TYPE_TABLE = 'skill_types'
 
-class SkillType extends Model {}
+class SkillType extends Model {
+  static associate(sequelize) {
+    this.hasMany(sequelize.models.Skill, {
+      foreignKey: 'skillTypeId',
+      as: 'skills'
+    })
+  }
+}
 
 const SkillTypeSchema = {
   id: {

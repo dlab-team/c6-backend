@@ -25,7 +25,10 @@ const SkillSchema = {
 
 class Skill extends Model {
   static associate(sequelize) {
-    this.belongsTo(sequelize.models.SkillType, { foreignKey: 'skillTypeId' })
+    this.belongsTo(sequelize.models.SkillType, {
+      foreignKey: 'skillTypeId',
+      as: 'skillType'
+    })
     this.belongsToMany(sequelize.models.WorkProfile, {
       through: sequelize.models.SkillWorkProfile,
       foreignKey: 'skillId',

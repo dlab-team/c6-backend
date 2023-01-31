@@ -8,16 +8,21 @@ class WorkProfile extends Model {
     this.belongsToMany(sequelize.models.Skill, {
       through: sequelize.models.SkillWorkProfile,
       foreignKey: 'workProfileId',
-      otherKey: 'skillId'
+      otherKey: 'skillId',
+      as: 'skills'
     })
 
     this.belongsToMany(sequelize.models.Charge, {
       through: 'work_profile_charges',
       foreignKey: 'work_profile_id',
-      otherKey: 'charge_id'
+      otherKey: 'charge_id',
+      as: 'charges'
     })
 
-    this.belongsTo(sequelize.models.Profile, { foreignKey: 'profileId' })
+    this.belongsTo(sequelize.models.Profile, {
+      foreignKey: 'profileId',
+      as: 'profile'
+    })
   }
 }
 

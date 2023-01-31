@@ -28,6 +28,7 @@ module.exports = {
         skill_type_id: languageSkillTypeId
       }
     ]
+
     const frameworkSkillTypeId = '7b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb62'
     const frameworkSkills = [
       {
@@ -66,9 +67,28 @@ module.exports = {
       }
     ]
 
+    const softSkillTypeId = '2b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb64'
+    const softSkills = [
+      {
+        id: '1b1deb4d-3b7d-4bad-4bdd-2b0d7b3dcb41',
+        name: 'Líder',
+        skill_type_id: softSkillTypeId
+      },
+      {
+        id: '1b1deb4d-3b7d-4bad-6bdd-2b0d7b3dcb42',
+        name: 'Comunicación/Sociable',
+        skill_type_id: softSkillTypeId
+      },
+      {
+        id: '1b1deb4d-3b7d-4bad-7bdd-2b0d7b3dcb43',
+        name: 'Aprendizaje ágil/Autónomo',
+        skill_type_id: softSkillTypeId
+      }
+    ]
+
     await queryInterface.bulkInsert(
       SKILL_TABLE,
-      [...languageSkills, ...frameworkSkills, ...toolsSkills],
+      [...languageSkills, ...frameworkSkills, ...toolsSkills, ...softSkills],
       {}
     )
   },

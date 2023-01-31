@@ -21,7 +21,6 @@ module.exports = {
       SKILL_TYPE_TABLE,
       [
         {
-          //'1eef0ce8-3bad-4350-a425-7b4a7a847c28'
           id: '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb61',
           name: 'Language'
         },
@@ -32,6 +31,10 @@ module.exports = {
         {
           id: '2b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb63',
           name: 'tools'
+        },
+        {
+          id: '2b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb64',
+          name: 'soft-skills'
         }
       ],
       {}

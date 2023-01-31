@@ -1,6 +1,6 @@
 const { Model, DataTypes, UUIDV4 } = require('sequelize')
-const { Skill } = require('./skillsModel')
-const { WorkProfile, WORK_PROFILE_TABLE } = require('./workProfileModel')
+const { Skill, SKILL_TABLE } = require('./skillsModel')
+const { WORK_PROFILE_TABLE } = require('./workProfileModel')
 
 const SKILL_WORK_PROFILE_TABLE = 'work_profiles_skills'
 
@@ -14,7 +14,7 @@ const SkillWorkProfileSchema = {
     field: 'skill_id',
     type: DataTypes.UUID,
     references: {
-      model: Skill
+      model: SKILL_TABLE
     }
   },
   workProfileId: {
@@ -32,9 +32,7 @@ const SkillWorkProfileSchema = {
 }
 
 class SkillWorkProfile extends Model {
-  static associate() {
-    //this.belongsTo(SkillType)
-  }
+  static associate() {}
 }
 
 function init(sequelize) {
@@ -49,5 +47,6 @@ function init(sequelize) {
 module.exports = {
   SkillWorkProfile,
   SkillWorkProfileSchema,
+  SKILL_WORK_PROFILE_TABLE,
   init
 }
