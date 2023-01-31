@@ -43,4 +43,4 @@ function init(sequelize) {
   return Skill
 }
 
-module.exports = { Skill, SkillSchema, init }
+module.exports = { Skill, SkillSchema, SKILL_TABLE, init }

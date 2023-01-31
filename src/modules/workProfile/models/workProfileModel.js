@@ -1,4 +1,5 @@
 const { Model, DataTypes, UUIDV4 } = require('sequelize')
+const { PROFILE_TABLE } = require('../../profile/profileModel')
 
 const WORK_PROFILE_TABLE = 'work_pofiles'
 
@@ -15,6 +16,8 @@ class WorkProfile extends Model {
       foreignKey: 'work_profile_id',
       otherKey: 'charge_id'
     })
+
+    this.belongsTo(sequelize.models.Profile, { foreignKey: 'profileId' })
   }
 }
 
@@ -50,13 +53,6 @@ const WorkProfileSchema = {
     field: 'project_description',
     type: DataTypes.TEXT
   },
-  ///verifica acaaa
-  // creo deberia ser relacion a muchos con tabla soft skills
-  softSkills: {
-    field: 'soft_skills',
-    type: DataTypes.STRING
-  },
-  /// verifica
   yearsOfExperiencie: {
     field: 'years_of_experiencie',
     type: DataTypes.STRING
@@ -78,8 +74,13 @@ const WorkProfileSchema = {
   },
 
   profileId: {
-    //ref
-    type: DataTypes.STRING
+    field: 'profile_id',
+    type: DataTypes.UUID,
+    unique: true,
+    allowNull: false,
+    references: {
+      model: PROFILE_TABLE
+    }
   }
 }
 

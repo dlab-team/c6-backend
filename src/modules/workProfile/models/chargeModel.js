@@ -33,4 +33,4 @@ function init(sequelize) {
   return Charge
 }
 
-module.exports = { Charge, ChargeSchema, init }
+module.exports = { Charge, ChargeSchema, CHARGE_TABLE, init }

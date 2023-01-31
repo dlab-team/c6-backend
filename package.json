@@ -10,7 +10,8 @@
     "dev": " nodemon ./index.js",
     "debug": "NODE_ENV=development nodemon --inspect --inspect-brk ./index.js",
     "db:migrate": "npx sequelize-cli db:migrate",
-    "db:migrate:generate": "npx sequelize-cli migration:generate --name"
+    "db:migrate:generate": "npx sequelize-cli migration:generate --name",
+    "db:seed:run": "npx sequelize-cli db:seed:all"
   },
   "repository": {
     "type": "git",
