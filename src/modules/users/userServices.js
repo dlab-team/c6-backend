@@ -1,5 +1,5 @@
 const httpStatus = require('http-status')
-const { User } = require('./userModel')
+const { User } = require('../../database/models')
 const { hashPassword } = require('../../utils/hashPassword')
 const { ErrorObject } = require('../../utils/helpers/error')
 
