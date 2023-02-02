@@ -6,7 +6,7 @@ const cookieSession = require('cookie-session')
 const app = express()
 
 const db = require('./src/database/models/index')
-// const authRouter = require('./src/modules/auth/auth.route')
+const authRouter = require('./src/modules/auth/auth.route')
 // const userRouter = require('./src/modules/users/user.route')
 const chargeRouter = require('./src/modules/charges/charge.route')
 const { ErrorObject } = require('./src/utils/helpers/error')
@@ -35,7 +35,7 @@ app.use(cors(corsOptions))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-// app.use('/api', authRouter)
+app.use('/api', authRouter)
 // app.use('/api', userRouter)
 app.use('/api', chargeRouter)
 

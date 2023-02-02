@@ -9,7 +9,7 @@ const authServices = require('./authServices')
 const registerUser = async (req, res, next) => {
   const { name, email, password } = req.body
   try {
-    await createUser({ name, email, password })
+    await createUser({ name, email, password, isActive: true, isAdmin: false })
     endpointResponse({
       res,
       statusCode: httpStatus.CREATED,
