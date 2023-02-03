@@ -51,7 +51,7 @@ app.get('/ping', function (_req, res) {
 })
 
 //swagger
-// swaggerDocs(app, process.env.PORT)
+swaggerDocs(app, process.env.PORT)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
