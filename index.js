@@ -5,9 +5,18 @@ const cookieSession = require('cookie-session')
 
 const app = express()
 
-const sequelize = require('./src/database/sequelize')
+const db = require('./src/database/models/index')
 const authRouter = require('./src/modules/auth/auth.route')
+// const userRouter = require('./src/modules/users/user.route')
+const chargesRouter = require('./src/modules/charges/charges.route')
+const citiesRouter = require('./src/modules/cities/cities.route')
+const countriesRouter = require('./src/modules/countries/countries.route')
+const institutionstype = require('./src/modules/institutionstype/institutionstype.route')
+const institutions = require('./src/modules/institutions/institutions.route')
+const skills = require('./src/modules/skills/skills.route')
+
 const { ErrorObject } = require('./src/utils/helpers/error')
+const { swaggerDocs } = require('./src/utils/swagger')
 
 // cors config
 var corsOptions = {
@@ -33,6 +42,13 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 app.use('/api', authRouter)
+// app.use('/api', userRouter)
+app.use('/api', chargesRouter)
+app.use('/api', countriesRouter)
+app.use('/api', citiesRouter)
+app.use('/api', institutionstype)
+app.use('/api', institutions)
+app.use('/api', skills)
 
 app.get('/', function (_req, res) {
   res.send({
@@ -44,6 +60,9 @@ app.get('/', function (_req, res) {
 app.get('/ping', function (_req, res) {
   res.send('pong')
 })
+
+//swagger
+swaggerDocs(app, process.env.PORT)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -58,9 +77,9 @@ app.use((err, req, res, next) => {
 })
 
 /* istanbul ignore if */
-//*This means: Run app.listen(8080) only if you are running the file
+// *This means: Run app.listen(8080) only if you are running the file
 if (!module.parent) {
-  sequelize
+  db.sequelize
     .authenticate()
     .then(() => {
       console.log('Successful database connection')

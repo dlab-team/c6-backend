@@ -7,13 +7,14 @@ const {
 const authServices = require('./authServices')
 
 const registerUser = async (req, res, next) => {
+  console.log('==>', req.body)
   const { name, email, password } = req.body
   try {
-    await createUser({ name, email, password })
+    await createUser({ name, email, password, isActive: true, isAdmin: false })
     endpointResponse({
       res,
       statusCode: httpStatus.CREATED,
-      message: 'El registro se completo de manera exitosa'
+      message: 'El registro se completó de manera exitosa'
     })
   } catch (error) {
     endpointErrorResponse({
@@ -39,7 +40,7 @@ const login = async (req, res, next) => {
     endpointErrorResponse({
       res,
       statusCode: httpStatus.UNAUTHORIZED,
-      message: 'Fallo la Autenticación',
+      message: 'Falló la Autenticación',
       error
     })
   }
@@ -51,8 +52,9 @@ const recovery = async (req, res, next) => {
     const token = await authServices.sendToken(email)
     endpointResponse({
       res,
-      statusCode: 200,
-      body: { token }
+      statusCode: httpStatus.OK,
+      body: { token },
+      message: 'Token enviado de forma exitosa'
     })
   } catch (error) {
     next(error)
@@ -65,7 +67,7 @@ const changePassword = async (req, res, next) => {
   if (password !== confirmPassword) {
     endpointErrorResponse({
       res,
-      statusCode: 201,
+      statusCode: httpStatus.UNAUTHORIZED,
       message: 'Las contraseñas no coinciden'
     })
   }
@@ -74,13 +76,13 @@ const changePassword = async (req, res, next) => {
     await authServices.newPassword(password, token)
     endpointResponse({
       res,
-      statusCode: 201,
+      statusCode: httpStatus.OK,
       message: 'Contraseña actualizada exitosamente'
     })
   } catch (error) {
     endpointErrorResponse({
       res,
-      statusCode: 201,
+      statusCode: httpStatus.UNAUTHORIZED,
       message: 'Ocurrio un problema actualizando la contraseña',
       error
     })
