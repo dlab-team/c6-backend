@@ -1,7 +1,7 @@
 const express = require('express')
-const chargeRouter = express.Router()
-const chargeControllers = require('./chargeControllers')
+const chargesRouter = express.Router()
+const chargesControllers = require('./chargesControllers')
 
-chargeRouter.get('/charges', chargeControllers.getCharges)
+chargesRouter.get('/charges', chargesControllers.getCharges)
 
-module.exports = chargeRouter
+module.exports = chargesRouter

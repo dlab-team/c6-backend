@@ -1,20 +1,9 @@
 const httpStatus = require('http-status')
+const { InstitutionType } = require('../../database/models')
 
 const getInstitutionstype = async (req, res) => {
   try {
-    // TODO: actualizar cuando el modelo exista
-    const institutions = {
-      data: [
-        {
-          id: 1,
-          name: 'Institución 1'
-        },
-        {
-          id: 2,
-          name: 'Institución 2'
-        }
-      ]
-    }
+    const institutions = await InstitutionType.findAll()
     res.status(httpStatus.OK).json(institutions)
   } catch (error) {
     res.status(httpStatus.INTERNAL_SERVER_ERROR).json({

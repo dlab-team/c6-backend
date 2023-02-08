@@ -1,5 +1,5 @@
-'use strict';
-const { Model } = require('sequelize');
+'use strict'
+const { Model } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
   class EducationalProfile extends Model {
     /**
@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       this.belongsTo(models.Profile, {
-        foreignKey: "profileId",
+        foreignKey: 'profileId',
         as: 'profile'
       })
       this.belongsToMany(models.Institution, {
@@ -21,20 +21,29 @@ module.exports = (sequelize, DataTypes) => {
       })
     }
   }
-  EducationalProfile.init({
-    educationalLevel: DataTypes.STRING,
-    currentlyEducationalSituation: DataTypes.ENUM,
-    englishLevel: DataTypes.ENUM,
-    anotherSkills: DataTypes.STRING,
-    profile_id: {
-      type: DataTypes.INTEGER,
-      unique: true,
-      allowNull: false,
-      references: { model: 'Profiles' }
+  EducationalProfile.init(
+    {
+      educationalLevel: DataTypes.STRING,
+      currentlyEducationalSituation: DataTypes.ENUM(
+        'Bootcamp',
+        'Diplomados',
+        'Universidad',
+        'Cursos',
+        'Otros'
+      ),
+      englishLevel: DataTypes.ENUM('Básico', 'Intermedio', 'Avanzado'),
+      anotherSkills: DataTypes.STRING,
+      profile_id: {
+        type: DataTypes.INTEGER,
+        unique: true,
+        allowNull: false,
+        references: { model: 'Profiles' }
+      }
+    },
+    {
+      sequelize,
+      modelName: 'EducationalProfile'
     }
-  }, {
-    sequelize,
-    modelName: 'EducationalProfile',
-  });
-  return EducationalProfile;
-};
+  )
+  return EducationalProfile
+}

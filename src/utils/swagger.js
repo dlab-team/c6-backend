@@ -11,16 +11,16 @@ const options = {
   apis: [
     `${path.join(__dirname, '../modules/auth/auth.docs.js')}`,
     `${path.join(__dirname, '../modules/users/user.docs.js')}`,
-    `${path.join(__dirname, '../modules/charges/charge.docs.js')}`,
-    `${path.join(__dirname, '../modules/cities/cities.docs.js')}`,
-    `${path.join(__dirname, '../modules/institutions/institutions.docs.js')}`,
-    `${path.join(__dirname, '../modules/skills/skills.docs.js')}`,
-    `${path.join(__dirname, '../modules/countries/countries.docs.js')}`,
-    `${path.join(
-      __dirname,
-      '../modules/institutionstype/institutionstype.docs.js'
-    )}`,
-    `${path.join(__dirname, '../modules/skilltype/skiltype.docs.js')}`
+    `${path.join(__dirname, '../modules/charges/charge.docs.js')}`
+    // `${path.join(__dirname, '../modules/cities/cities.docs.js')}`,
+    // `${path.join(__dirname, '../modules/institutions/institutions.docs.js')}`,
+    // `${path.join(__dirname, '../modules/skills/skills.docs.js')}`,
+    // `${path.join(__dirname, '../modules/countries/countries.docs.js')}`,
+    // `${path.join(
+    //   __dirname,
+    //   '../modules/institutionstype/institutionstype.docs.js'
+    // )}`,
+    // `${path.join(__dirname, '../modules/skilltype/skiltype.docs.js')}`
   ]
 }
 

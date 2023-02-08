@@ -2,8 +2,12 @@ const express = require('express')
 const authRouter = express.Router()
 const authControllers = require('./authControllers')
 const validateReqSchema = require('../../middelwares/validateReqSchema')
-const { loginReqSchema, registerUserReqSchema, recoverySchema, changePasswordSchema } = require('./authReqSchemas')
-
+const {
+  loginReqSchema,
+  registerUserReqSchema,
+  recoverySchema,
+  changePasswordSchema
+} = require('./authReqSchemas')
 
 authRouter.post(
   '/auth/register',
@@ -17,7 +21,7 @@ authRouter.post(
 )
 authRouter.post(
   '/auth/recovery',
-  validateReqSchema(recoverySchema), 
+  validateReqSchema(recoverySchema),
   authControllers.recovery
 )
 authRouter.put(

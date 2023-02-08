@@ -13,6 +13,22 @@ const getSkills = async (req, res) => {
   }
 }
 
+const getSkillsByType = async (req, res) => {
+  try {
+    const skills = await Skill.findAll({
+      where: {
+        skillTypeId: req.params.id
+      }
+    })
+    res.status(httpStatus.OK).json(skills)
+  } catch (error) {
+    res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
+      message: 'Error al obtener las habilidades'
+    })
+  }
+}
+
 module.exports = {
-  getSkills
+  getSkills,
+  getSkillsByType
 }
