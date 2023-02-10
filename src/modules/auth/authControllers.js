@@ -7,7 +7,6 @@ const {
 const authServices = require('./authServices')
 
 const registerUser = async (req, res, next) => {
-  console.log('==>', req.body)
   const { name, email, password } = req.body
   try {
     await createUser({ name, email, password, isActive: true, isAdmin: false })
