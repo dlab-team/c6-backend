@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -13,7 +13,13 @@ module.exports = {
         type: Sequelize.STRING
       },
       currentlyEducationalSituation: {
-        type: Sequelize.ENUM('Bootcamp', 'Diplomados', 'Universidad', 'Cursos', 'Otros')
+        type: Sequelize.ENUM(
+          'Bootcamp',
+          'Diplomados',
+          'Universidad',
+          'Cursos',
+          'Otros'
+        )
       },
       englishLevel: {
         type: Sequelize.ENUM('Básico', 'Intermedio', 'Avanzado')
@@ -21,7 +27,7 @@ module.exports = {
       anotherSkills: {
         type: Sequelize.STRING
       },
-      profile_id: {
+      profileId: {
         type: Sequelize.INTEGER,
         unique: true,
         allowNull: false,
@@ -37,9 +43,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    });
+    })
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('EducationalProfiles');
+    await queryInterface.dropTable('EducationalProfiles')
   }
-};
+}
