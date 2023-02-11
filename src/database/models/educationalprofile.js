@@ -13,11 +13,9 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'profileId',
         as: 'profile'
       })
-      this.belongsToMany(models.Institution, {
-        through: models.Studies,
-        foreignKey: 'educationalProfileId',
-        otherKey: 'institutionId',
-        as: 'studies'
+      this.hasMany(models.Studies, {
+        as: 'studies',
+        foreignKey: 'educationalProfileId'
       })
     }
   }
@@ -33,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
       ),
       englishLevel: DataTypes.ENUM('Básico', 'Intermedio', 'Avanzado'),
       anotherSkills: DataTypes.STRING,
-      profile_id: {
+      profileId: {
         type: DataTypes.INTEGER,
         unique: true,
         allowNull: false,
