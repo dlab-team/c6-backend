@@ -17,6 +17,14 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'userId',
         as: 'user'
       })
+      this.hasOne(models.WorkProfile, {
+        as: 'workProfile',
+        foreignKey: 'profileId'
+      })
+      this.hasOne(models.EducationalProfile, {
+        as: 'educationalProfile',
+        foreignKey: 'profileId'
+      })
     }
   }
   Profile.init(
@@ -25,8 +33,12 @@ module.exports = (sequelize, DataTypes) => {
       phone: DataTypes.STRING,
       gender: DataTypes.ENUM('masculino', 'femenino', 'otro'),
       avatar: DataTypes.STRING,
-      cityId:  { type: DataTypes.INTEGER, references: { model: 'Cities' } },
-      userId: { type: DataTypes.INTEGER, references: { model: 'Users' } }
+      cityId: { type: DataTypes.INTEGER, references: { model: 'Cities' } },
+      userId: {
+        type: DataTypes.INTEGER,
+        references: { model: 'Users' },
+        unique: true
+      }
     },
     {
       sequelize,

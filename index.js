@@ -7,13 +7,14 @@ const app = express()
 
 const db = require('./src/database/models/index')
 const authRouter = require('./src/modules/auth/auth.route')
-// const userRouter = require('./src/modules/users/user.route')
+const userRouter = require('./src/modules/users/user.route')
 const chargesRouter = require('./src/modules/charges/charges.route')
 const citiesRouter = require('./src/modules/cities/cities.route')
 const countriesRouter = require('./src/modules/countries/countries.route')
 const institutionstype = require('./src/modules/institutionstype/institutionstype.route')
 const institutions = require('./src/modules/institutions/institutions.route')
 const skills = require('./src/modules/skills/skills.route')
+const profileRouter = require('./src/modules/profile/profile.route')
 
 const { ErrorObject } = require('./src/utils/helpers/error')
 const { swaggerDocs } = require('./src/utils/swagger')
@@ -42,13 +43,14 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 app.use('/api', authRouter)
-// app.use('/api', userRouter)
+app.use('/api', userRouter)
 app.use('/api', chargesRouter)
 app.use('/api', countriesRouter)
 app.use('/api', citiesRouter)
 app.use('/api', institutionstype)
 app.use('/api', institutions)
 app.use('/api', skills)
+app.use('/api', profileRouter)
 
 app.get('/', function (_req, res) {
   res.send({
