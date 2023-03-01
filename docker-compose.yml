@@ -14,6 +14,8 @@ services:
     networks:
       - postgres-network
   app:
+    expose: 
+      - "3000"
     container_name: ${APP_CONTAINER_NAME}
     build: .
     command: bash -c "npm run dev"
