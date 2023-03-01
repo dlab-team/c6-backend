@@ -12,6 +12,17 @@ module.exports = {
           password: '123456789',
           isActive: true,
           isAdmin: false,
+          userState: 'Register',
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          name: 'dlabAdmin',
+          email: 'admin@mail.com',
+          password: 'Qwerty.123$',
+          isActive: true,
+          isAdmin: true,
+          userState: 'Register',
           createdAt: new Date(),
           updatedAt: new Date()
         }
