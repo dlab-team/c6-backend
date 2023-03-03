@@ -11,7 +11,13 @@ async function login(email, password) {
   if (!isCorrectPassword) {
     throw new ErrorObject('email or password invalid', 401)
   }
-  const token = createJWT({ id: user.id, name: user.name })
+  const token = createJWT({
+    id: user.id,
+    name: user.name,
+    isAdmin: user.isAdmin,
+    email: user.email,
+    userState: user.userState 
+  })
   return token
 }
 
@@ -34,7 +40,7 @@ async function newPassword(password, token) {
 
   const newPassword = hashPassword(password)
   user.password = newPassword
-  user.save()
+  await user.save()
 
   return user
 }

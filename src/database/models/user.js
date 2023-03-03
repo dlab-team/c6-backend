@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
       email: { type: DataTypes.STRING, unique: true, allowNull: false },
       password: DataTypes.STRING,
       isActive: { type: DataTypes.BOOLEAN, allowNull: false },
-      isAdmin: { type: DataTypes.BOOLEAN, allowNull: false }
+      isAdmin: { type: DataTypes.BOOLEAN, allowNull: false },
+      userState: { type: DataTypes.ENUM('Register', 'Job Ready'), allowNull: false }
     },
     {
       sequelize,

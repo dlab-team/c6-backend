@@ -1,5 +1,8 @@
 const httpStatus = require('http-status')
-const { createOrUpdateFullProfile } = require('./profileServices')
+const {
+  createOrUpdateFullProfile,
+  findOneFullProfile
+} = require('./profileServices')
 const {
   endpointErrorResponse,
   endpointResponse
@@ -28,6 +31,26 @@ const registerProfile = async (req, res, next) => {
   }
 }
 
+const getFullProfile = async (req, res, next) => {
+  try {
+    const userId = req.user.id
+    const profile = await findOneFullProfile(userId)
+    endpointResponse({
+      res,
+      statusCode: httpStatus.OK,
+      body: { profile }
+    })
+  } catch (error) {
+    console.log(error)
+    endpointErrorResponse({
+      res,
+      statusCode: httpStatus.BAD_REQUEST,
+      error
+    })
+  }
+}
+
 module.exports = {
-  registerProfile
+  registerProfile,
+  getFullProfile
 }
