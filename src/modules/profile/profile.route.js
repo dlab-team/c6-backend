@@ -27,7 +27,6 @@ profileRouter.put(
   '/profiles/experiencie',
   isUserAuthenticated,
   profileControler.putWorkProfileExperiencie
-=======
 
 profileRouter.post('/profiles', profileControler.registerProfile)
 
