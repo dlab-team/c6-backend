@@ -10,7 +10,8 @@ const {
 } = require('../../database/models')
 const {
   createOrUpdateFullProfile,
-  updateProfilePersonal
+  updateProfilePersonal,
+  findOneFullProfile
 } = require('./profileServices')
 const {
   updateWorkProfileSkills,
@@ -36,6 +37,24 @@ const registerProfile = async (req, res, next) => {
       res,
       statusCode: httpStatus.BAD_REQUEST,
       message: 'Falló el registro de los datos',
+      error
+    })
+  }
+}
+
+const getFullProfile = async (req, res, next) => {
+  try {
+    const userId = req.user.id
+    const profile = await findOneFullProfile(userId)
+    endpointResponse({
+      res,
+      statusCode: httpStatus.OK,
+      body: { profile }
+    })
+  } catch (error) {
+    endpointErrorResponse({
+      res,
+      statusCode: httpStatus.BAD_REQUEST,
       error
     })
   }
@@ -129,10 +148,12 @@ const putWorkProfileExperiencie = async (req, res, next) => {
   }
 }
 
+
 module.exports = {
   registerProfile,
   putWorkProfileSkills,
   putProfileStudies,
   putWorkProfileExperiencie,
-  putProfilePersonal
+  putProfilePersonal,
+  getFullProfile
 }

@@ -15,7 +15,8 @@ async function login(email, password) {
     id: user.id,
     name: user.name,
     isAdmin: user.isAdmin,
-    email: user.email
+    email: user.email,
+    userState: user.userState 
   })
   return token
 }
