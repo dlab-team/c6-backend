@@ -80,8 +80,9 @@ async function createOrUpdateFullProfile({
   return { profile, workProfile, educationalProfile }
 }
 
-async function getProfileCompleted(profileId) {
-  const profile = await Profile.findByPk(profileId, {
+async function findOneFullProfile(userId) {
+  const profile = await Profile.findOne({
+    where: { userId },
     include: [
       {
         association: 'workProfile',
@@ -97,6 +98,15 @@ async function getProfileCompleted(profileId) {
   return profile
 }
 
+async function updateProfilePersonal(userId, data) {
+  if (data.email) {
+    await User.update({ email: data.email }, { where: { id: userId } })
+  }
+  await Profile.update(data, { where: { userId } })
+}
+
 module.exports = {
-  createOrUpdateFullProfile
+  createOrUpdateFullProfile,
+  updateProfilePersonal,
+  findOneFullProfile
 }
