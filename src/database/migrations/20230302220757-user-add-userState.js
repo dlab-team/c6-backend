@@ -10,5 +10,7 @@ module.exports = {
         defaultValue: 'Register'
     })
   },
-  async down(queryInterface, Sequelize) {}
+  async down(queryInterface, Sequelize) {
+    await queryInterface.removeColumn('Users', 'userState');
+  }
 };

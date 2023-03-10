@@ -12,7 +12,8 @@ const options = {
     `${path.join(__dirname, '../modules/auth/auth.docs.js')}`,
     `${path.join(__dirname, '../modules/users/user.docs.js')}`,
     `${path.join(__dirname, '../modules/charges/charge.docs.js')}`,
-    `${path.join(__dirname, '../modules/profile/profile.docs.js')}`
+    `${path.join(__dirname, '../modules/profile/profile.docs.js')}`,
+    `${path.join(__dirname, '../modules/tests/tests.docs.js')}`
     // `${path.join(__dirname, '../modules/cities/cities.docs.js')}`,
     // `${path.join(__dirname, '../modules/institutions/institutions.docs.js')}`,
     // `${path.join(__dirname, '../modules/skills/skills.docs.js')}`,

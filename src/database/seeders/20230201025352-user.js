@@ -12,7 +12,6 @@ module.exports = {
           password: '123456789',
           isActive: true,
           isAdmin: false,
-          userState: 'Register',
           createdAt: new Date(),
           updatedAt: new Date()
         },
@@ -22,7 +21,6 @@ module.exports = {
           password: 'Qwerty.123$',
           isActive: true,
           isAdmin: true,
-          userState: 'Register',
           createdAt: new Date(),
           updatedAt: new Date()
         }
