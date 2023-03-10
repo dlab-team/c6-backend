@@ -98,7 +98,15 @@ async function findOneFullProfile(userId) {
   return profile
 }
 
+async function updateProfilePersonal(userId, data) {
+  if (data.email) {
+    await User.update({ email: data.email }, { where: { id: userId } })
+  }
+  await Profile.update(data, { where: { userId } })
+}
+
 module.exports = {
   createOrUpdateFullProfile,
+  updateProfilePersonal,
   findOneFullProfile
 }
