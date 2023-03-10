@@ -11,7 +11,7 @@ async function login(email, password) {
   if (!isCorrectPassword) {
     throw new ErrorObject('email or password invalid', 401)
   }
-  const token = createJWT({ id: user.id, name: user.name })
+  const token = createJWT({ id: user.id, name: user.name})
   return token
 }
 
@@ -22,7 +22,7 @@ async function sendToken(email) {
     throw new ErrorObject('user not found', 401)
   }
 
-  const token = createJWT({ id: user.id, name: user.name })
+  const token = createJWT({ id: user.id, name: user.name})
   await emailForgotPassword({ email, name: user.name }, token)
 
   return token
