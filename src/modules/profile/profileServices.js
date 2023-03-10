@@ -105,8 +105,70 @@ async function updateProfilePersonal(userId, data) {
   await Profile.update(data, { where: { userId } })
 }
 
+async function allProfiles() {
+  const user = await Profile.findAll({
+    attributes: ['fullName', 'phone', 'gender', 'cityId', 'userId'],
+    include: [
+      {
+        association: 'user',
+        attributes: ['email', 'isAdmin']
+      },
+      {
+        association: 'city',
+        attributes: ['countryId', 'name'],
+        include: {
+          association: 'country',
+          attributes: ['name']
+        }
+      }
+    ]
+  })
+
+  const educacion = await Studies.findAll({
+    attributes: ['educationalProfileId', 'name', 'institutionId'],
+    include: [
+      {
+        association: 'institution',
+        attributes: ['name', 'institutionTypeId'],
+        include: {
+          association: 'institutionType',
+          attributes: ['name']
+        }
+      }
+    ]
+  })
+
+  const skills = await SkillWorkProfile.findAll({
+    attributes: ['skillId', 'workProfileId', 'level'],
+    include: {
+      association: 'Skill',
+      attributes: ['name', 'skillTypeId'],
+      include: {
+        association: 'skillType',
+        attributes: ['name']
+      }
+    }
+  })
+
+  console.log(
+    '🚀 ~ file: profileServices.js:134 ~ allProfiles ~ skills:',
+    skills
+  )
+
+  if (!user || !educacion || !skills) {
+    throw new ErrorObject('User not found', httpStatus.NOT_FOUND)
+  }
+  const profile = {
+    user: user,
+    educacion: educacion,
+    skills: skills
+  }
+  return profile
+}
+
 module.exports = {
   createOrUpdateFullProfile,
   updateProfilePersonal,
-  findOneFullProfile
+  findOneFullProfile,
+  allProfiles
 }

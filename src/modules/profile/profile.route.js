@@ -37,4 +37,6 @@ profileRouter.get(
   profileControler.getFullProfile
 )
 
+profileRouter.get('/profiles', profileControler.readProfiles)
+
 module.exports = profileRouter

@@ -18,6 +18,7 @@ const {
   updateWorkProfile
 } = require('./workProfileServices')
 const { updateProfileStudies } = require('./educationalProfileServices')
+const profileServices = require('./profileServices')
 
 const registerProfile = async (req, res, next) => {
   try {
@@ -148,6 +149,29 @@ const putWorkProfileExperiencie = async (req, res, next) => {
   }
 }
 
+const readProfiles = async (req, res, next) => {
+  try {
+    const allUsers = await profileServices.allProfiles()
+
+    console.log('profileController.js l.36 (☞ﾟヮﾟ)☞', allUsers)
+
+    /*  const readUser = allUsers.filter((admin) => admin.isAdmin == false)
+     */
+    endpointResponse({
+      res,
+      statusCode: httpStatus.FOUND,
+      body: allUsers,
+      message: 'Los perfiles fueron encontrado exitosamente'
+    })
+  } catch (error) {
+    endpointErrorResponse({
+      res,
+      statusCode: httpStatus.BAD_REQUEST,
+      message: 'Hubo un problema trayendo los perfiles, intentalo nuevamente',
+      error
+    })
+  }
+}
 
 module.exports = {
   registerProfile,
@@ -155,5 +179,6 @@ module.exports = {
   putProfileStudies,
   putWorkProfileExperiencie,
   putProfilePersonal,
-  getFullProfile
+  getFullProfile,
+  readProfiles
 }
