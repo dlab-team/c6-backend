@@ -15,7 +15,6 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'countryId',
         as: 'country'
       })
-     
     }
   }
   City.init({

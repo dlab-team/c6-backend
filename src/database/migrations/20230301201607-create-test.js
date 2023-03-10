@@ -22,7 +22,9 @@ module.exports = {
         type: Sequelize.STRING
       },
       deleted: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,

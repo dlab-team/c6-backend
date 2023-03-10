@@ -22,7 +22,11 @@ module.exports = (sequelize, DataTypes) => {
     url: DataTypes.STRING,
     imagenUrl: DataTypes.STRING,
     descripcion: DataTypes.STRING,
-    deleted: DataTypes.BOOLEAN
+    deleted: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'Test',
