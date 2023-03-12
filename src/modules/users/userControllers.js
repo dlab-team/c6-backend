@@ -31,7 +31,33 @@ const getStatus = async (req, res, next) => {
   }
 }
 
+const getProfile = async (req, res, next) => {
+  try {
+    const { id } = req.user
+    const fullUserData = await userServices.findOneUserBy({ id })
+    const currentUser = {
+      name: fullUserData.name,
+      email: fullUserData.email
+    }
+
+    endpointResponse({
+      res,
+      statusCode: httpStatus.FOUND,
+      body: currentUser,
+      message: 'El perfil del usuario fue encontrado exitosamente'
+    })
+  } catch (error) {
+    endpointErrorResponse({
+      res,
+      statusCode: httpStatus.BAD_REQUEST,
+      message:
+        'Hubo un problema trayendo el perfil del usuario, intentalo nuevamente',
+      error
+    })
+  }
+}
+
 module.exports = {
-  // getProfile,
+  getProfile,
   getStatus
 }
