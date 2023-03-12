@@ -120,20 +120,30 @@ async function allProfiles() {
           association: 'country',
           attributes: ['name']
         }
-      }
-    ]
-  })
-
-  const educacion = await Studies.findAll({
-    attributes: ['educationalProfileId', 'name', 'institutionId'],
-    include: [
+      },
       {
-        association: 'institution',
-        attributes: ['name', 'institutionTypeId'],
-        include: {
-          association: 'institutionType',
-          attributes: ['name']
-        }
+        association: 'educationalProfile',
+        attributes: ['id'],
+        include: [
+          {
+            association: 'studies',
+            attributes: ['name', 'institutionId'],
+            include: [
+              {
+                association: 'institution',
+                attributes: ['name', 'institutionTypeId'],
+                include: {
+                  association: 'institutionType',
+                  attributes: ['name']
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        association: 'workProfile',
+        attributes: ['id']
       }
     ]
   })
@@ -155,12 +165,11 @@ async function allProfiles() {
     skills
   )
 
-  if (!user || !educacion || !skills) {
+  if (!user || !skills) {
     throw new ErrorObject('User not found', httpStatus.NOT_FOUND)
   }
   const profile = {
     user: user,
-    educacion: educacion,
     skills: skills
   }
   return profile
