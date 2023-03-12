@@ -4,6 +4,7 @@ const {
   endpointErrorResponse
 } = require('../../utils/helpers/successResponse')
 const userServices = require('./userServices')
+const profileServices = require('../profile/profileServices')
 const getStatus = async (req, res, next) => {
   try {
     const { id } = req.user
@@ -32,12 +33,17 @@ const getStatus = async (req, res, next) => {
 }
 
 const getProfile = async (req, res, next) => {
+  // TODO: refactor all this code, just one good query
   try {
     const { id } = req.user
     const fullUserData = await userServices.findOneUserBy({ id })
+
+    const fullProfile = await profileServices.findOneFullProfile(id)
+
     const currentUser = {
       name: fullUserData.name,
-      email: fullUserData.email
+      email: fullUserData.email,
+      fullProfile: fullProfile
     }
 
     endpointResponse({
