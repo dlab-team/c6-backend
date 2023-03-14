@@ -4,15 +4,14 @@ const { Test } = require('../../database/models')
 const getTests = async (req, res) => {
   try {
     const { isAdmin } = req.user
-    console.log(req.user)
     if (isAdmin === true) {
     const tests = await Test.findAll({
-      attributes: ['name', 'url', 'imagenUrl', 'descripcion', 'deleted'],
+      attributes: ['id', 'name', 'url', 'imagenUrl', 'descripcion', 'deleted'],
     })
     res.status(httpStatus.OK).json(tests)
   } else {
     const tests = await Test.findAll({
-      attributes: ['name', 'url', 'imagenUrl', 'descripcion', 'deleted'],
+      attributes: ['id', 'name', 'url', 'imagenUrl', 'descripcion', 'deleted'],
       where: {
         deleted: false
       }
