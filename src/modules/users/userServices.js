@@ -25,11 +25,8 @@ async function findOneUserBy({ id, email = null }) {
   return user
 }
 
-async function stateUpdate(id){
-  await User.update(
-    { userState: 'Job Ready'},
-    { where: {id: id}}
-  );
+async function stateUpdate(id) {
+  await User.update({ userState: 'Job Ready' }, { where: { id: id } })
 }
 
 module.exports = {

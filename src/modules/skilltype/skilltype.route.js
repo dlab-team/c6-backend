@@ -1,7 +1,8 @@
 const express = require('express')
-const skilltypeRouter = express.Router()
+const skillTypeRouter = express.Router()
 const skilltypeControllers = require('./skilltypeControllers')
 
-skillsRouter.get('/skilltype', skilltypeControllers.getSkilltype)
+skillTypeRouter.get('/skilltype', skilltypeControllers.getSkilltype)
 
-module.exports = skilltypeRouter
+module.exports = skillTypeRouter
+
