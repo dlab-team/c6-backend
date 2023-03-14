@@ -1,4 +1,10 @@
 'use strict'
+require('dotenv').config()
+const bcrypt = require('bcryptjs')
+const salt = bcrypt.genSaltSync(10)
+
+const passHashUser = bcrypt.hashSync(process.env.PASS_USER_SEED, salt)
+const passHashAdmin = bcrypt.hashSync(process.env.PASS_ADMIN_SEED, salt)
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -9,20 +15,18 @@ module.exports = {
         {
           name: 'dlab',
           email: 'dlab@gmail.com',
-          password: '123456789',
+          password: passHashUser,
           isActive: true,
           isAdmin: false,
-          userState: 'Register',
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
           name: 'dlabAdmin',
           email: 'admin@mail.com',
-          password: 'Qwerty.123$',
+          password: passHashAdmin,
           isActive: true,
           isAdmin: true,
-          userState: 'Register',
           createdAt: new Date(),
           updatedAt: new Date()
         }

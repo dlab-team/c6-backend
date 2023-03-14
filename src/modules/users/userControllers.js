@@ -4,6 +4,7 @@ const {
   endpointErrorResponse
 } = require('../../utils/helpers/successResponse')
 const userServices = require('./userServices')
+const profileServices = require('../profile/profileServices')
 const getStatus = async (req, res, next) => {
   try {
     const { id } = req.user
@@ -32,6 +33,5 @@ const getStatus = async (req, res, next) => {
 }
 
 module.exports = {
-  // getProfile,
   getStatus
 }

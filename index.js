@@ -15,6 +15,9 @@ const institutionstype = require('./src/modules/institutionstype/institutionstyp
 const institutions = require('./src/modules/institutions/institutions.route')
 const skills = require('./src/modules/skills/skills.route')
 const profileRouter = require('./src/modules/profile/profile.route')
+const testsRouter = require('./src/modules/tests/tests.route')
+const skillTypeRouter = require('./src/modules/skillType/skillType.route')
+
 
 const { ErrorObject } = require('./src/utils/helpers/error')
 const { swaggerDocs } = require('./src/utils/swagger')
@@ -51,6 +54,8 @@ app.use('/api', institutionstype)
 app.use('/api', institutions)
 app.use('/api', skills)
 app.use('/api', profileRouter)
+app.use('/api', testsRouter)
+app.use('/api', skillTypeRouter)
 
 app.get('/', function (_req, res) {
   res.send({

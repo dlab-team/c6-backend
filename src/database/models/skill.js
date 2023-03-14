@@ -17,6 +17,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'skillsId',
         as: 'pivoteSkillsTest'
       })
+      this.hasMany(models.SkillWorkProfile, {
+        foreignKey: 'skillsId',
+        as: 'skill.WorkProfile'
+      })
     }
   }
   Skill.init(

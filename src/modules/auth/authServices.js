@@ -28,7 +28,7 @@ async function sendToken(email) {
     throw new ErrorObject('user not found', 401)
   }
 
-  const token = createJWT({ id: user.id, name: user.name })
+  const token = createJWT({ id: user.id, name: user.name})
   await emailForgotPassword({ email, name: user.name }, token)
 
   return token
