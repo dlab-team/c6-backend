@@ -4,7 +4,7 @@ const { Test } = require('../../database/models')
 const getTests = async (req, res) => {
   try {
     const { isAdmin } = req.user
-    if (isAdmin === 'true') {
+    if (isAdmin === true) {
     const tests = await Test.findAll({
       attributes: ['id', 'name', 'url', 'imagenUrl', 'descripcion', 'deleted'],
     })
