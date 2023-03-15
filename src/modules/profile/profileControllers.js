@@ -46,11 +46,37 @@ const getFullProfile = async (req, res, next) => {
   try {
     const userId = req.user.id
     const profile = await findOneFullProfile(userId)
-    endpointResponse({
-      res,
-      statusCode: httpStatus.OK,
-      body: { profile }
-    })
+    if(profile){
+      endpointResponse({
+        res,
+        statusCode: httpStatus.OK,
+        body: { profile }
+      })
+    } else {
+      endpointResponse({
+        res,
+        statusCode: httpStatus.OK,
+        body: { profile: {
+          cityId: '',
+          phone: 'No registrado',
+          workProfile: {
+            linkedinUrl: '',
+            githubUrl: '',
+            websiteUrl: '',
+            cvUrl: '',
+            yearsOfExperiencie: '',
+            employmentSituation: '',
+            availability: ''
+          },
+          educationalProfile: {
+            englishLevel: 'No registrado',
+            studies: [],
+          },
+        }, 
+      }
+      })
+    }
+    
   } catch (error) {
     endpointErrorResponse({
       res,
