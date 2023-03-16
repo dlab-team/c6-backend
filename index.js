@@ -16,7 +16,7 @@ const institutions = require('./src/modules/institutions/institutions.route')
 const skills = require('./src/modules/skills/skills.route')
 const profileRouter = require('./src/modules/profile/profile.route')
 const testsRouter = require('./src/modules/tests/tests.route')
-const skillTypeRouter = require('./src/modules/skillType/skillType.route')
+const skillTypeRouter = require('./src/modules/skilltype/skilltype.route')
 
 
 const { ErrorObject } = require('./src/utils/helpers/error')
