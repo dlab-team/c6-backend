@@ -89,8 +89,22 @@ async function findOneFullProfile(userId) {
         include: ['charges', 'skills']
       },
       {
+        association: 'city',
+        include: ['country']
+      },
+      {
         association: 'educationalProfile',
-        include: [{ association: 'studies', include: ['institution'] }]
+        include: [
+          {
+            association: 'studies',
+            include: [
+              {
+                association: 'institution',
+                include: ['institutionType']
+              }
+            ]
+          }
+        ]
       }
     ]
   })
