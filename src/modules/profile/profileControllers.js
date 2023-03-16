@@ -66,7 +66,13 @@ const getFullProfile = async (req, res, next) => {
             cvUrl: '',
             yearsOfExperiencie: '',
             employmentSituation: '',
-            availability: ''
+            availability: '',
+            skills: {
+              name: '',
+              SkillWorkProfile: {
+                level: ''
+              }
+            }
           },
           educationalProfile: {
             englishLevel: 'No registrado',
