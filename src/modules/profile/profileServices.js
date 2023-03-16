@@ -89,6 +89,10 @@ async function findOneFullProfile(userId) {
         include: ['charges', 'skills']
       },
       {
+        association: 'city',
+        include: ['country']
+      },
+      {
         association: 'educationalProfile',
         include: [
           {
